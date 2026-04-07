@@ -4,7 +4,7 @@
       <hr class="border-0 border-t border-[#5b6169]/45" />
 
       <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-5 text-center text-[0.875rem] text-[#4b5563]">
-        <p>© 2025 Компания</p>
+        <p>© 2025 АРТ СТРОЙ</p>
 
         <a href="#" class="transition duration-200 hover:text-[#111827]">
           Политика конфиденциальности
