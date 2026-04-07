@@ -15,11 +15,75 @@ const activePhraseIndex = ref(0)
 const phraseStepMs = 1800
 let phraseTimer = null
 const isVideoReady = ref(false)
+const heroVideoRef = ref(null)
+let autoplayRetryTimer = null
+let autoplayAttempts = 0
 
 const { openRequestModal } = useRequestModal()
 
 const handlePrimaryAction = () => {
   openRequestModal('hero')
+}
+
+const applyAutoplayAttrs = (video) => {
+  video.muted = true
+  video.defaultMuted = true
+  video.playsInline = true
+  video.setAttribute('muted', '')
+  video.setAttribute('playsinline', '')
+  video.setAttribute('webkit-playsinline', '')
+}
+
+const isVideoPlaying = (video) => {
+  return Boolean(video && !video.paused && !video.ended && video.currentTime > 0)
+}
+
+const scheduleAutoplayRetry = (delay = 280) => {
+  if (autoplayAttempts >= 5) return
+
+  if (autoplayRetryTimer) {
+    clearTimeout(autoplayRetryTimer)
+    autoplayRetryTimer = null
+  }
+
+  autoplayRetryTimer = window.setTimeout(() => {
+    autoplayAttempts += 1
+    tryPlayVideo()
+  }, delay)
+}
+
+const tryPlayVideo = () => {
+  const video = heroVideoRef.value
+  if (!video) return
+
+  applyAutoplayAttrs(video)
+  if (isVideoPlaying(video)) return
+
+  const playPromise = video.play()
+  if (playPromise && typeof playPromise.then === 'function') {
+    playPromise.catch(() => {
+      scheduleAutoplayRetry()
+    })
+  }
+}
+
+const handleVideoCanPlay = () => {
+  tryPlayVideo()
+}
+
+const handleVideoLoadedData = () => {
+  isVideoReady.value = true
+  tryPlayVideo()
+}
+
+const handleVisibilityOrFocus = () => {
+  if (document.visibilityState === 'visible') {
+    tryPlayVideo()
+  }
+}
+
+const handleFirstUserGesture = () => {
+  tryPlayVideo()
 }
 
 onMounted(() => {
@@ -34,6 +98,14 @@ onMounted(() => {
       phraseTimer = null
     }
   }, phraseStepMs)
+
+  tryPlayVideo()
+  scheduleAutoplayRetry(420)
+
+  document.addEventListener('visibilitychange', handleVisibilityOrFocus)
+  window.addEventListener('focus', handleVisibilityOrFocus)
+  window.addEventListener('touchstart', handleFirstUserGesture, { passive: true, once: true })
+  window.addEventListener('pointerdown', handleFirstUserGesture, { once: true })
 })
 
 onBeforeUnmount(() => {
@@ -41,6 +113,16 @@ onBeforeUnmount(() => {
     clearInterval(phraseTimer)
     phraseTimer = null
   }
+
+  if (autoplayRetryTimer) {
+    clearTimeout(autoplayRetryTimer)
+    autoplayRetryTimer = null
+  }
+
+  document.removeEventListener('visibilitychange', handleVisibilityOrFocus)
+  window.removeEventListener('focus', handleVisibilityOrFocus)
+  window.removeEventListener('touchstart', handleFirstUserGesture)
+  window.removeEventListener('pointerdown', handleFirstUserGesture)
 })
 </script>
 
@@ -97,14 +179,17 @@ onBeforeUnmount(() => {
           </div>
 
           <video
+            ref="heroVideoRef"
             class="block h-full w-full object-cover object-[30%_70%] transition-opacity duration-500 sm:object-[30%_70%] lg:object-[30%_70%]"
             :class="isVideoReady ? 'opacity-100' : 'opacity-0'"
             autoplay
             muted
             playsinline
+            webkit-playsinline
             preload="metadata"
             poster="/images/hero.jpg"
-            @loadeddata="isVideoReady = true"
+            @loadeddata="handleVideoLoadedData"
+            @canplay="handleVideoCanPlay"
           >
             <source src="/videos/12345.MP4" type="video/mp4" />
           </video>
