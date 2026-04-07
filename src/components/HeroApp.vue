@@ -37,10 +37,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="hero-root w-full border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
-    <div class="grid w-full items-stretch lg:grid-cols-[45%_55%]">
-      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-5 lg:py-0 xl:pr-6">
-        <div class="w-full">
+  <section class="hero-root w-full overflow-hidden border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
+    <div class="grid w-full items-stretch overflow-hidden lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div class="z-10 flex min-w-0 w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:justify-center lg:px-10 lg:py-0 xl:px-14">
+        <div class="w-full max-w-[42rem]">
           <p
             class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
           >
@@ -54,12 +54,12 @@ onBeforeUnmount(() => {
           </p>
 
           <h1
-            class="mt-3 max-w-[36rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
+            class="mt-3 max-w-[42rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
           >
             {{ heroContent.title }}
           </h1>
 
-          <p class="mt-3 max-w-[30rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
+          <p class="mt-3 max-w-[42rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
             {{ heroContent.description }}
           </p>
 
@@ -73,10 +73,10 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="relative w-full bg-[#edf0f3]">
-        <div class="h-[13.5rem] w-full sm:h-[16.5rem] md:h-[19.5rem] lg:h-[21.5rem] xl:h-[33rem]">
+      <div class="relative min-w-0 w-full overflow-hidden bg-[#edf0f3]">
+        <div class="h-[13.5rem] w-full overflow-hidden sm:h-[16.5rem] md:h-[33.5rem] lg:h-[33.5rem] xl:h-[43rem]">
           <video
-            class="h-full w-full object-cover object-[64%_36%] sm:object-[67%_34%] lg:object-[72%_36%]"
+            class="block h-full w-full object-cover object-[30%_70%] sm:object-[30%_70%] lg:object-[30%_70%]"
             autoplay
             muted
             playsinline
