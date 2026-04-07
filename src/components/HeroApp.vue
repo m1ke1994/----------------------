@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
 <template>
   <section class="hero-root w-full overflow-hidden border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
     <div class="grid w-full items-stretch overflow-hidden lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-      <div class="z-10 flex min-w-0 w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:justify-center lg:px-10 lg:py-0 xl:px-14">
+      <div class="z-10 flex min-w-0 w-full items-center px-4 pb-5 pt-[8rem] sm:px-6 sm:pb-6 sm:pt-[8.5rem] lg:justify-center lg:px-10 lg:py-2 xl:px-14">
         <div class="w-full max-w-[42rem]">
           <p
             class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
