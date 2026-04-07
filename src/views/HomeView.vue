@@ -13,6 +13,7 @@ import AppFooter from '../components/layout/AppFooter.vue'
 
     <section class="section_all">
       <video
+        v-parallax="0.08"
         class="section_all__video"
         autoplay
         muted

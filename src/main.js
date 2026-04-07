@@ -3,10 +3,13 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import './style.css'
+import { parallaxDirective, revealDirective } from './directives/scrollEffects'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+app.directive('reveal', revealDirective)
+app.directive('parallax', parallaxDirective)
 
 app.mount('#app')

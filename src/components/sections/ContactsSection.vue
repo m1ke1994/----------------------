@@ -48,10 +48,14 @@ onBeforeUnmount(() => {
   <section id="contacts" class="contacts-root w-full scroll-mt-28 pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-14 lg:pt-10">
     <div class="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
       <div class="mx-auto max-w-[760px] text-center">
-        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#6b7280]">
+        <p
+          v-reveal="{ type: 'title', delay: 0 }"
+          class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#6b7280]"
+        >
           контакты
         </p>
         <h2
+          v-reveal="{ type: 'title', delay: 0.08 }"
           class="mt-3 text-[2.2rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#111827] sm:text-[2.8rem] lg:text-[3.2rem]"
         >
           Контакты
@@ -60,6 +64,7 @@ onBeforeUnmount(() => {
 
       <div class="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-[minmax(0,40%)_minmax(0,60%)] lg:items-stretch">
         <article
+          v-reveal="{ type: 'contact-up', delay: 0.08 }"
           class="rounded-[1.25rem] border border-[#5b6169]/25 bg-white/55 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-[6px] sm:p-6 lg:p-8"
         >
           <h3
@@ -69,7 +74,7 @@ onBeforeUnmount(() => {
           </h3>
 
           <div class="mt-6 space-y-4">
-            <div class="flex items-start gap-3">
+            <div v-reveal="{ type: 'contact-up', delay: 0.12 }" class="flex items-start gap-3">
               <span
                 class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#5b6169]/30 bg-white/70 text-[#374151]"
               >
@@ -92,7 +97,7 @@ onBeforeUnmount(() => {
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
+            <div v-reveal="{ type: 'contact-up', delay: 0.16 }" class="flex items-start gap-3">
               <span
                 class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#5b6169]/30 bg-white/70 text-[#374151]"
               >
@@ -120,7 +125,7 @@ onBeforeUnmount(() => {
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
+            <div v-reveal="{ type: 'contact-up', delay: 0.2 }" class="flex items-start gap-3">
               <span
                 class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#5b6169]/30 bg-white/70 text-[#374151]"
               >
@@ -147,7 +152,7 @@ onBeforeUnmount(() => {
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
+            <div v-reveal="{ type: 'contact-up', delay: 0.24 }" class="flex items-start gap-3">
               <span
                 class="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#5b6169]/30 bg-white/70 text-[#374151]"
               >
@@ -172,6 +177,7 @@ onBeforeUnmount(() => {
 
           <button
             type="button"
+            v-reveal="{ type: 'contact-up', delay: 0.3 }"
             class="mt-7 inline-flex items-center rounded-full border border-[#4b5563]/35 bg-white/75 px-6 py-2.5 text-[0.92rem] font-medium text-[#111827] shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-[1px] hover:border-[#374151]/50 hover:bg-white"
             @click="openRequestModal('contacts')"
           >
@@ -181,6 +187,7 @@ onBeforeUnmount(() => {
 
         <article
           ref="mapHolderRef"
+          v-reveal="{ type: 'contact-up', delay: 0.16 }"
           class="relative overflow-hidden rounded-[1.25rem] border border-[#5b6169]/25 bg-white/50 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-[6px] sm:p-5 lg:p-6"
         >
           <div

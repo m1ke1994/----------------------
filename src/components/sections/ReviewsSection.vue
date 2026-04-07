@@ -160,10 +160,16 @@ onBeforeUnmount(() => {
   <section id="reviews" class="reviews-root w-full scroll-mt-28 bg-transparent pb-12 pt-4 sm:pb-14 sm:pt-5 lg:pb-16 lg:pt-6">
     <div class="w-full border-0 bg-transparent px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
       <div class="mx-auto max-w-[58rem] text-center">
-        <h2 class="text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#111827] sm:text-[2.7rem] lg:text-[3.2rem]">
+        <h2
+          v-reveal="{ type: 'title', delay: 0 }"
+          class="text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#111827] sm:text-[2.7rem] lg:text-[3.2rem]"
+        >
           Отзывы наших клиентов
         </h2>
-        <p class="mx-auto mt-4 max-w-[46rem] text-[1rem] leading-[1.72] text-[#4b5563] sm:text-[1.05rem]">
+        <p
+          v-reveal="{ type: 'title', delay: 0.1 }"
+          class="mx-auto mt-4 max-w-[46rem] text-[1rem] leading-[1.72] text-[#4b5563] sm:text-[1.05rem]"
+        >
           Мы ценим доверие клиентов и внимательно относимся к качеству каждого реализованного проекта.
         </p>
       </div>
@@ -182,8 +188,9 @@ onBeforeUnmount(() => {
       >
         <div class="reviews-list flex gap-4">
           <article
-            v-for="review in reviews"
+            v-for="(review, index) in reviews"
             :key="review.id"
+            v-reveal="{ type: 'review-left', delay: index * 0.07 }"
             class="review-slide flex h-full min-h-[18.5rem] flex-col rounded-[1.25rem] border border-[#5b6169]/28 bg-white/60 p-5  sm:p-6"
           >
             <div class="flex items-start gap-3">

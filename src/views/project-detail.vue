@@ -9,6 +9,7 @@ import ProjectsSection from '../components/sections/ProjectsSection.vue'
 
     <section class="section_all">
       <video
+        v-parallax="0.08"
         class="section_all__video"
         autoplay
         muted
