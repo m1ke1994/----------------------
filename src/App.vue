@@ -7,7 +7,7 @@ import RequestModal from './components/modals/RequestModal.vue'
 const route = useRoute()
 
 const contentOffsetClass = computed(() => {
-  if (route.path === '/') {
+  if (route.path === '/' || route.path === '/projects') {
     return 'pt-0'
   }
 
