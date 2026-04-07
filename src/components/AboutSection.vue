@@ -6,7 +6,7 @@ import { heroContent } from '../data'
   <section class="about-root w-full bg-transparent text-[#181a21]">
     <div class="w-full px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
       <div class="grid gap-10 lg:grid-cols-[minmax(18.75rem,25.5rem)_1fr] lg:gap-14">
-        <div class="max-w-[27rem] rounded-[1.375rem] border border-white/45 bg-white/28 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.16)] backdrop-blur-[8px] sm:p-6">
+        <div class="max-w-[27rem] rounded-[1.375rem] border border-[#5b6169]/40 bg-white/28 p-5 shadow-[0_18px_50px_rgba(15,23,42,0.16)] backdrop-blur-[8px] sm:p-6">
           <p class="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-[#969aa2]">
             {{ heroContent.aboutLabel }}
           </p>
@@ -23,7 +23,7 @@ import { heroContent } from '../data'
 
           <button
             type="button"
-            class="mt-7 inline-flex items-center gap-3 rounded-xl border border-white/65 bg-white/55 px-6 py-3 text-[0.875rem] font-medium text-[#1c1f27] shadow-[0_10px_30px_rgba(15,23,42,0.16)] backdrop-blur-[8px] transition duration-200 hover:-translate-y-[1px] hover:border-white/80 hover:bg-white/70"
+            class="mt-7 inline-flex items-center gap-3 rounded-xl border border-[#5b6169]/45 bg-white/55 px-6 py-3 text-[0.875rem] font-medium text-[#1c1f27] shadow-[0_10px_30px_rgba(15,23,42,0.16)] backdrop-blur-[8px] transition duration-200 hover:-translate-y-[1px] hover:border-[#5b6169]/60 hover:bg-white/70"
           >
             <span>{{ heroContent.secondaryAction }}</span>
             <span aria-hidden="true">&rarr;</span>
@@ -35,10 +35,10 @@ import { heroContent } from '../data'
             <article
               v-for="item in heroContent.features"
               :key="item.title"
-              class="group rounded-[1.375rem] border border-white/45 bg-white/24 p-5 shadow-[0_12px_30px_rgba(16,24,40,0.12)] backdrop-blur-[10px] transition duration-300 hover:-translate-y-[2px] hover:border-white/65 hover:bg-white/32 hover:shadow-[0_16px_36px_rgba(16,24,40,0.18)] sm:p-6"
+              class="group rounded-[1.375rem] border border-[#5b6169]/35 bg-white/24 p-5 shadow-[0_12px_30px_rgba(16,24,40,0.12)] backdrop-blur-[10px] transition duration-300 hover:-translate-y-[2px] hover:border-[#5b6169]/50 hover:bg-white/32 hover:shadow-[0_16px_36px_rgba(16,24,40,0.18)] sm:p-6"
             >
               <div
-                class="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/65 bg-white/60 text-[#1d2028] transition duration-300 group-hover:border-white/85"
+                class="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-[#5b6169]/45 bg-white/60 text-[#1d2028] transition duration-300 group-hover:border-[#5b6169]/65"
               >
                 <svg
                   v-if="item.icon === 'layers'"
@@ -103,12 +103,12 @@ import { heroContent } from '../data'
           </div>
 
           <div
-            class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/45 pt-8 sm:grid-cols-2 xl:grid-cols-4"
+            class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-[#5b6169]/45 pt-8 sm:grid-cols-2 xl:grid-cols-4"
           >
             <article
               v-for="item in heroContent.stats"
               :key="item.value + item.label"
-              class="rounded-[1rem] border border-white/40 bg-white/20 px-3 py-4 text-center shadow-[0_10px_24px_rgba(16,24,40,0.12)] backdrop-blur-[8px]"
+              class="rounded-[1rem] border border-[#5b6169]/40 bg-white/20 px-3 py-4 text-center shadow-[0_10px_24px_rgba(16,24,40,0.12)] backdrop-blur-[8px]"
             >
               <p
                 class="text-[2.6rem] font-semibold leading-none tracking-[-0.04em] text-[#191c24] sm:text-[3.15rem] lg:text-[3.45rem]"

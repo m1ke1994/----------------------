@@ -5,36 +5,38 @@ import { heroContent } from '../data'
 <template>
   <section class="hero-root w-full border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
     <div class="grid w-full items-stretch lg:grid-cols-[minmax(18rem,29rem)_minmax(0,1fr)]">
-      <div class="z-10 w-full px-4 pb-6 pt-4 sm:px-6 sm:pb-7 sm:pt-5 lg:pl-10 lg:pr-7 lg:pb-8 lg:pt-6">
-        <p
-          class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
-        >
-          <template
-            v-for="(item, index) in heroContent.categories"
-            :key="item"
+      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-7 lg:py-0">
+        <div class="w-full">
+          <p
+            class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
           >
-            <span>{{ item }}</span>
-            <span v-if="index < heroContent.categories.length - 1">&bull;</span>
-          </template>
-        </p>
+            <template
+              v-for="(item, index) in heroContent.categories"
+              :key="item"
+            >
+              <span>{{ item }}</span>
+              <span v-if="index < heroContent.categories.length - 1">&bull;</span>
+            </template>
+          </p>
 
-        <h1
-          class="mt-3 max-w-[31rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
-        >
-          {{ heroContent.title }}
-        </h1>
+          <h1
+            class="mt-3 max-w-[31rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
+          >
+            {{ heroContent.title }}
+          </h1>
 
-        <p class="mt-3 max-w-[24rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
-          {{ heroContent.description }}
-        </p>
+          <p class="mt-3 max-w-[24rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
+            {{ heroContent.description }}
+          </p>
 
-        <button
-          type="button"
-          class="mt-4 inline-flex items-center gap-3 rounded-xl bg-[#181b24] px-6 py-2.5 text-[0.875rem] font-medium text-white transition duration-200 hover:-translate-y-[1px] hover:bg-black"
-        >
-          <span>{{ heroContent.primaryAction }}</span>
-          <span aria-hidden="true">&rarr;</span>
-        </button>
+          <button
+            type="button"
+            class="mt-4 inline-flex items-center gap-3 rounded-xl bg-[#181b24] px-6 py-2.5 text-[0.875rem] font-medium text-white transition duration-200 hover:-translate-y-[1px] hover:bg-black"
+          >
+            <span>{{ heroContent.primaryAction }}</span>
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
       </div>
 
       <div class="relative w-full bg-[#edf0f3]">
