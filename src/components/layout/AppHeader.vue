@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
     >
       <RouterLink
         to="/"
-        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[6.25rem] lg:w-[6.25rem]"
+        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[5.25rem] lg:w-[5.25rem]"
       >
         <img
           src="/logo/logo.png"
