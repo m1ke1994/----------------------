@@ -13,7 +13,6 @@ const navItems = [
   { id: 'projects', label: 'Наши проекты', target: 'projects' },
   { id: 'reviews', label: 'Отзывы', target: 'reviews' },
   { id: 'contacts', label: 'Контакты', target: 'contacts' },
-  { id: 'request', label: 'Оставить заявку', target: 'request' },
 ]
 
 const closeMenu = () => {
@@ -64,16 +63,7 @@ const updateActiveSection = () => {
     }
   }
 
-  if (route.hash === '#request') {
-    activeSection.value = 'request'
-    return
-  }
-
   activeSection.value = current
-}
-
-const onScroll = () => {
-  updateActiveSection()
 }
 
 watch(
@@ -92,11 +82,11 @@ watch(isMenuOpen, (opened) => {
 onMounted(async () => {
   await syncFromHash()
   updateActiveSection()
-  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('scroll', updateActiveSection, { passive: true })
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('scroll', updateActiveSection)
   document.body.style.overflow = ''
 })
 </script>
@@ -108,7 +98,7 @@ onBeforeUnmount(() => {
     >
       <RouterLink
         to="/"
-        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[5.25rem] lg:w-[5.25rem]"
+        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[6.25rem] lg:w-[6.25rem]"
       >
         <img
           src="/logo/logo.png"

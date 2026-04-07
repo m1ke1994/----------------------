@@ -1,5 +1,6 @@
-﻿<script setup>
+<script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { heroContent } from '../data'
 
 const heroPhrases = [
@@ -13,6 +14,28 @@ const heroPhrases = [
 const activePhraseIndex = ref(0)
 const phraseStepMs = 1800
 let phraseTimer = null
+
+const route = useRoute()
+const router = useRouter()
+
+const scrollToContacts = () => {
+  const section = document.getElementById('contacts')
+  if (!section) return
+
+  section.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
+const handlePrimaryAction = async () => {
+  if (route.path !== '/') {
+    await router.push({ path: '/', hash: '#contacts' })
+    return
+  }
+
+  scrollToContacts()
+}
 
 onMounted(() => {
   phraseTimer = setInterval(() => {
@@ -66,6 +89,7 @@ onBeforeUnmount(() => {
           <button
             type="button"
             class="mt-4 inline-flex items-center gap-3 rounded-xl bg-[#181b24] px-6 py-2.5 text-[0.875rem] font-medium text-white transition duration-200 hover:-translate-y-[1px] hover:bg-black"
+            @click="handlePrimaryAction"
           >
             <span>{{ heroContent.primaryAction }}</span>
             <span aria-hidden="true">&rarr;</span>

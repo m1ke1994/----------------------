@@ -15,9 +15,13 @@ const routes = [
     component: AboutView,
   },
   {
-    path: '/project-detail',
-    name: 'project-detail',
+    path: '/projects',
+    name: 'projects',
     component: ProjectDetailView,
+  },
+  {
+    path: '/project-detail',
+    redirect: '/projects',
   },
 ]
 
