@@ -157,8 +157,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="reviews-root w-full pb-12 pt-4 sm:pb-14 sm:pt-5 lg:pb-16 lg:pt-6">
-    <div class="w-full px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
+  <section class="reviews-root w-full bg-transparent pb-12 pt-4 sm:pb-14 sm:pt-5 lg:pb-16 lg:pt-6">
+    <div class="w-full border-0 bg-transparent px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
       <div class="mx-auto max-w-[58rem] text-center">
         <h2 class="text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#111827] sm:text-[2.7rem] lg:text-[3.2rem]">
           Отзывы наших клиентов
@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
           <article
             v-for="review in reviews"
             :key="review.id"
-            class="review-slide flex h-full min-h-[18.5rem] flex-col rounded-[1.25rem] border border-[#5b6169]/28 bg-white/60 p-5 shadow-[0_12px_30px_rgba(15,23,42,0.1)] backdrop-blur-[6px] transition duration-300 hover:-translate-y-[2px] hover:border-[#5b6169]/45 hover:shadow-[0_16px_36px_rgba(15,23,42,0.14)] sm:p-6"
+            class="review-slide flex h-full min-h-[18.5rem] flex-col rounded-[1.25rem] border border-[#5b6169]/28 bg-white/60 p-5  sm:p-6"
           >
             <div class="flex items-start gap-3">
               <img

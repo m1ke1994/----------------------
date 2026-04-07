@@ -4,8 +4,8 @@ import { heroContent } from '../data'
 
 <template>
   <section class="hero-root w-full border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
-    <div class="grid w-full items-stretch lg:grid-cols-[minmax(18rem,29rem)_minmax(0,1fr)]">
-      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-7 lg:py-0">
+    <div class="grid w-full items-stretch lg:grid-cols-[44%_56%]">
+      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-8 lg:py-0 xl:pl-12 xl:pr-10">
         <div class="w-full">
           <p
             class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
@@ -20,12 +20,12 @@ import { heroContent } from '../data'
           </p>
 
           <h1
-            class="mt-3 max-w-[31rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
+            class="mt-3 max-w-[35rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
           >
             {{ heroContent.title }}
           </h1>
 
-          <p class="mt-3 max-w-[24rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
+          <p class="mt-3 max-w-[30rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
             {{ heroContent.description }}
           </p>
 
