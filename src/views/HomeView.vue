@@ -3,6 +3,8 @@ import HeroApp from '../components/HeroApp.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ProjectsSection from '../components/sections/ProjectsSection.vue'
 import ReviewsSection from '../components/sections/ReviewsSection.vue'
+import ContactsSection from '../components/sections/ContactsSection.vue'
+import AppFooter from '../components/layout/AppFooter.vue'
 </script>
 
 <template>
@@ -27,6 +29,8 @@ import ReviewsSection from '../components/sections/ReviewsSection.vue'
         <AboutSection />
         <ProjectsSection />
         <ReviewsSection />
+        <ContactsSection />
+        <AppFooter />
       </div>
     </section>
   </main>
