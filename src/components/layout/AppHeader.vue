@@ -104,13 +104,17 @@ onBeforeUnmount(() => {
 <template>
   <header class="header-shell fixed inset-x-0 top-3 z-[90] px-3 sm:px-5 lg:px-8">
     <div
-      class="mx-auto flex h-14 w-full max-w-[1440px] items-center justify-between rounded-[1.1rem] border border-white/65 bg-[#f8fafc]/62 px-4 shadow-[0_12px_28px_rgba(15,23,42,0.09)] backdrop-blur-[14px] sm:h-16 sm:px-6 lg:px-8"
+      class="mx-auto flex h-[5.25rem] w-full max-w-[1440px] items-center justify-between rounded-[1.1rem] border border-white/65 bg-[#f8fafc]/62 px-4 shadow-[0_12px_28px_rgba(15,23,42,0.09)] backdrop-blur-[14px] sm:h-[5.5rem] sm:px-6 lg:h-[7rem] lg:px-8"
     >
       <RouterLink
         to="/"
-        class="shrink-0 text-[0.95rem] font-semibold uppercase tracking-[0.13em] text-[#111827] transition hover:text-[#374151] sm:text-[1rem]"
+        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[5.25rem] lg:w-[5.25rem]"
       >
-        Компания
+        <img
+          src="/logo/logo.png"
+          alt="Логотип компании"
+          class="h-full w-full rounded-full object-cover"
+        />
       </RouterLink>
 
       <nav class="hidden items-center gap-1 lg:flex">

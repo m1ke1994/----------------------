@@ -5,7 +5,7 @@ import AppHeader from './components/layout/AppHeader.vue'
 <template>
   <AppHeader />
 
-  <div class="pt-[4.65rem] sm:pt-[5.25rem]">
+  <div class="pt-[6.25rem] sm:pt-[6.5rem] lg:pt-[8rem]">
     <RouterView />
   </div>
 </template>
