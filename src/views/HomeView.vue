@@ -2,6 +2,7 @@
 import HeroApp from '../components/HeroApp.vue'
 import AboutSection from '../components/AboutSection.vue'
 import ProjectsSection from '../components/sections/ProjectsSection.vue'
+import ReviewsSection from '../components/sections/ReviewsSection.vue'
 </script>
 
 <template>
@@ -25,6 +26,7 @@ import ProjectsSection from '../components/sections/ProjectsSection.vue'
       <div class="section_all__content">
         <AboutSection />
         <ProjectsSection />
+        <ReviewsSection />
       </div>
     </section>
   </main>
