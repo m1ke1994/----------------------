@@ -4,7 +4,7 @@ import { heroContent } from '../data'
 
 <template>
   <section class="hero-root w-full border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
-    <div class="grid w-full items-stretch lg:grid-cols-[minmax(18rem,29rem)_minmax(0,1fr)]">
+    <div class="grid w-full items-stretch lg:grid-cols-[minmax(40rem,50rem)_minmax(0,1fr)]">
       <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-7 lg:py-0">
         <div class="w-full">
           <p
@@ -41,11 +41,15 @@ import { heroContent } from '../data'
 
       <div class="relative w-full bg-[#edf0f3]">
         <div class="h-[13.5rem] w-full sm:h-[16.5rem] md:h-[19.5rem] lg:h-[21.5rem] xl:h-[33rem]">
-          <img
-            :src="heroContent.heroImage"
-            alt="Modern glass house"
+          <video
             class="h-full w-full object-cover object-[64%_36%] sm:object-[67%_34%] lg:object-[72%_36%]"
-          />
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+          >
+            <source src="/videos/12345.MP4" type="video/mp4" />
+          </video>
         </div>
 
         <div
