@@ -102,13 +102,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="header-shell fixed inset-x-0 top-3 z-[90] px-3 sm:px-5 lg:px-8">
+  <header class="header-shell fixed inset-x-0 top-0 z-[90] px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8 lg:pt-4">
     <div
       class="mx-auto flex h-[5.25rem] w-full max-w-[1440px] items-center justify-between rounded-[1.1rem] border border-white/65 bg-[#f8fafc]/62 px-4 shadow-[0_12px_28px_rgba(15,23,42,0.09)] backdrop-blur-[14px] sm:h-[5.5rem] sm:px-6 lg:h-[7rem] lg:px-8"
     >
       <RouterLink
         to="/"
-        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[5.25rem] lg:w-[5.25rem]"
+        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[6.25rem] lg:w-[6.25rem]"
       >
         <img
           src="/logo/logo.png"
@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
           v-for="item in navItems"
           :key="item.id"
           type="button"
-          class="rounded-full px-4 py-2 text-[0.9rem] font-medium transition duration-200"
+          class="rounded-full px-4 py-2 text-[1rem] font-medium transition duration-200 xl:text-[1.0625rem]"
           :class="activeSection === item.id
             ? 'bg-white/84 text-[#111827] shadow-[0_7px_18px_rgba(15,23,42,0.1)]'
             : 'text-[#4b5563] hover:bg-white/72 hover:text-[#111827]'"
@@ -154,7 +154,7 @@ onBeforeUnmount(() => {
           class="mx-auto mt-20 w-[min(92%,28rem)] rounded-[1.25rem] border border-white/72 bg-[#f9fbfe]/76 p-5 shadow-[0_20px_50px_rgba(15,23,42,0.14)] backdrop-blur-[16px] sm:mt-24 sm:p-6"
         >
           <div class="mb-4 flex items-center justify-between">
-            <p class="text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-[#6b7280]">
+            <p class="text-[0.875rem] font-semibold uppercase tracking-[0.14em] text-[#6b7280]">
               Навигация
             </p>
 
@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
               v-for="item in navItems"
               :key="`mobile-${item.id}`"
               type="button"
-              class="w-full rounded-[0.95rem] border px-4 py-3 text-left text-[0.98rem] font-medium transition duration-200"
+              class="w-full rounded-[0.95rem] border px-4 py-3 text-left text-[1.06rem] font-medium transition duration-200"
               :class="activeSection === item.id
                 ? 'border-[#4b5563]/32 bg-white text-[#111827] shadow-[0_8px_18px_rgba(15,23,42,0.08)]'
                 : 'border-[#5b6169]/18 bg-white/70 text-[#4b5563] hover:border-[#5b6169]/30 hover:text-[#111827]'"
