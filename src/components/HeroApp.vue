@@ -11,12 +11,21 @@ const heroPhrases = [
 ]
 
 const activePhraseIndex = ref(0)
+const phraseStepMs = 1800
 let phraseTimer = null
 
 onMounted(() => {
   phraseTimer = setInterval(() => {
-    activePhraseIndex.value = (activePhraseIndex.value + 1) % heroPhrases.length
-  }, 1800)
+    if (activePhraseIndex.value < heroPhrases.length - 1) {
+      activePhraseIndex.value += 1
+      return
+    }
+
+    if (phraseTimer) {
+      clearInterval(phraseTimer)
+      phraseTimer = null
+    }
+  }, phraseStepMs)
 })
 
 onBeforeUnmount(() => {
@@ -29,8 +38,8 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="hero-root w-full border-b border-[#e2e5ea] bg-[#f2f3f5] text-[#181a21]">
-    <div class="grid w-full items-stretch lg:grid-cols-[minmax(40rem,50rem)_minmax(0,1fr)]">
-      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-7 lg:py-0">
+    <div class="grid w-full items-stretch lg:grid-cols-[45%_55%]">
+      <div class="z-10 flex w-full items-center px-4 py-5 sm:px-6 sm:py-6 lg:pl-10 lg:pr-5 lg:py-0 xl:pr-6">
         <div class="w-full">
           <p
             class="flex flex-wrap gap-x-2 gap-y-1 text-[0.625rem] font-semibold uppercase tracking-[0.18em] text-[#8e929a] sm:text-[0.6875rem]"
@@ -45,12 +54,12 @@ onBeforeUnmount(() => {
           </p>
 
           <h1
-            class="mt-3 max-w-[31rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
+            class="mt-3 max-w-[36rem] whitespace-pre-line text-[1.95rem] font-semibold leading-[0.96] tracking-[-0.04em] text-[#14161d] sm:text-[2.6rem] md:text-[3rem] lg:text-[3.35rem]"
           >
             {{ heroContent.title }}
           </h1>
 
-          <p class="mt-3 max-w-[24rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
+          <p class="mt-3 max-w-[30rem] text-[0.98rem] leading-[1.62] text-[#5d6169] sm:text-[1rem]">
             {{ heroContent.description }}
           </p>
 
@@ -77,13 +86,11 @@ onBeforeUnmount(() => {
           </video>
         </div>
 
-        <div class="pointer-events-none absolute inset-0 z-20" />
-
         <div class="pointer-events-none absolute inset-0 z-30 flex items-center justify-center px-5 sm:px-8 lg:px-10">
           <Transition name="hero-phrase" mode="out-in">
             <p
               :key="activePhraseIndex"
-              class="hero-phrase-text max-w-[92%] text-center text-[1.02rem] font-semibold uppercase leading-[1.35] tracking-[0.08em] text-[#f8fafc] sm:text-[1.3rem] md:text-[1.55rem] lg:text-[1.85rem]"
+              class="hero-phrase-text max-w-[92%] text-center text-[1.02rem] font-semibold uppercase leading-[1.35] tracking-[0.08em] text-[#d7dde8] sm:text-[1.3rem] md:text-[1.55rem] lg:text-[1.85rem]"
             >
               {{ heroPhrases[activePhraseIndex] }}
             </p>
