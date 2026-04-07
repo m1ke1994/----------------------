@@ -1,7 +1,11 @@
 ﻿<script setup>
 import HeroApp from '../components/HeroApp.vue'
+import AboutSection from '../components/AboutSection.vue'
 </script>
 
 <template>
-  <HeroApp />
+  <main class="w-full">
+    <HeroApp />
+    <AboutSection />
+  </main>
 </template>
