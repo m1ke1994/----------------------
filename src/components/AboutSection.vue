@@ -1,7 +1,7 @@
 ﻿<template>
   <section class="w-full bg-transparent text-[#181a21]">
     <div class="w-full px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
-      <div class="flex min-h-[620px] flex-col rounded-[1.75rem] border border-[#5b6169]/30 bg-white/20 p-6 shadow-[0_20px_60px_rgba(15,23,42,0.14)] backdrop-blur-[8px] sm:p-8 lg:p-10">
+      <div class="flex min-h-[620px] flex-col p-6 sm:p-8 lg:p-10">
         <div>
           <p class="text-center text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#6b7280]">
             О компании
