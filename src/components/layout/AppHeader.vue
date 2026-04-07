@@ -94,11 +94,11 @@ onBeforeUnmount(() => {
 <template>
   <header class="header-shell fixed inset-x-0 top-0 z-[90] px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8 lg:pt-4">
     <div
-      class="mx-auto flex h-[5.25rem] w-full max-w-[1440px] items-center justify-between rounded-[1.1rem] border border-white/65 bg-[#f8fafc]/62 px-4 shadow-[0_12px_28px_rgba(15,23,42,0.09)] backdrop-blur-[14px] sm:h-[5.5rem] sm:px-6 lg:h-[7rem] lg:px-8"
+      class="mx-auto flex  w-full max-w-[1440px] items-center justify-between rounded-[1.1rem] border border-white/65 bg-[#f8fafc]/62 px-2 shadow-[0_12px_28px_rgba(15,23,42,0.09)] backdrop-blur-[14px] sm:h-[5.5rem] sm:px-4 lg:h-[7rem] lg:px-4"
     >
       <RouterLink
         to="/"
-        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[6.25rem] lg:w-[6.25rem]"
+        class="flex h-[4.375rem] w-[4.375rem] shrink-0 items-center justify-center rounded-full border border-[#5b6169]/25 bg-white/75 p-[0.1875rem] shadow-[0_6px_16px_rgba(15,23,42,0.08)] transition duration-200 hover:bg-white lg:h-[4.25rem] lg:w-[4.25rem]"
       >
         <img
           src="/logo/logo.png"

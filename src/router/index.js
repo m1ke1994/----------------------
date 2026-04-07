@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProjectDetailView from '../views/project-detail.vue'
+import PrivacyPolicyView from '../views/PrivacyPolicyView.vue'
+import DataConsentView from '../views/DataConsentView.vue'
 
 const routes = [
   {
@@ -22,6 +24,16 @@ const routes = [
   {
     path: '/project-detail',
     redirect: '/projects',
+  },
+  {
+    path: '/privacy-policy',
+    name: 'privacy-policy',
+    component: PrivacyPolicyView,
+  },
+  {
+    path: '/data-consent',
+    name: 'data-consent',
+    component: DataConsentView,
   },
 ]
 

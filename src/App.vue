@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import AppHeader from './components/layout/AppHeader.vue'
+import RequestModal from './components/modals/RequestModal.vue'
 
 const route = useRoute()
 
@@ -20,4 +21,6 @@ const contentOffsetClass = computed(() => {
   <div :class="contentOffsetClass">
     <RouterView />
   </div>
+
+  <RequestModal />
 </template>

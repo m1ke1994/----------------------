@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRequestModal } from '../composables/useRequestModal'
 import { heroContent } from '../data'
 
 const heroPhrases = [
@@ -15,26 +15,10 @@ const activePhraseIndex = ref(0)
 const phraseStepMs = 1800
 let phraseTimer = null
 
-const route = useRoute()
-const router = useRouter()
+const { openRequestModal } = useRequestModal()
 
-const scrollToContacts = () => {
-  const section = document.getElementById('contacts')
-  if (!section) return
-
-  section.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  })
-}
-
-const handlePrimaryAction = async () => {
-  if (route.path !== '/') {
-    await router.push({ path: '/', hash: '#contacts' })
-    return
-  }
-
-  scrollToContacts()
+const handlePrimaryAction = () => {
+  openRequestModal('hero')
 }
 
 onMounted(() => {
