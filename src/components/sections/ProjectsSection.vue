@@ -19,7 +19,7 @@ const getFilterLabel = (categoryId) => {
 </script>
 
 <template>
-  <section class="projects-root w-full pb-10 pt-3 sm:pb-12 sm:pt-4 lg:pb-14 lg:pt-5">
+  <section id="projects" class="projects-root w-full scroll-mt-28 pb-10 pt-3 sm:pb-12 sm:pt-4 lg:pb-14 lg:pt-5">
     <div class="w-full px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
       <div class="mx-auto max-w-[58rem] text-center">
         <p class="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#6b7280]">

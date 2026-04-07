@@ -1,5 +1,5 @@
 ﻿<template>
-  <section class="contacts-root w-full pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-14 lg:pt-10">
+  <section id="contacts" class="contacts-root w-full scroll-mt-28 pb-10 pt-6 sm:pb-12 sm:pt-8 lg:pb-14 lg:pt-10">
     <div class="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
       <div class="mx-auto max-w-[760px] text-center">
         <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-[#6b7280]">
@@ -125,8 +125,9 @@
           </div>
 
           <button
+            id="request"
             type="button"
-            class="mt-7 inline-flex items-center rounded-full border border-[#4b5563]/35 bg-white/75 px-6 py-2.5 text-[0.92rem] font-medium text-[#111827] shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-[1px] hover:border-[#374151]/50 hover:bg-white"
+            class="mt-7 inline-flex scroll-mt-28 items-center rounded-full border border-[#4b5563]/35 bg-white/75 px-6 py-2.5 text-[0.92rem] font-medium text-[#111827] shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition duration-200 hover:-translate-y-[1px] hover:border-[#374151]/50 hover:bg-white"
           >
             Оставить заявку
           </button>

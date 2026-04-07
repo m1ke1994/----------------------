@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="reviews-root w-full bg-transparent pb-12 pt-4 sm:pb-14 sm:pt-5 lg:pb-16 lg:pt-6">
+  <section id="reviews" class="reviews-root w-full scroll-mt-28 bg-transparent pb-12 pt-4 sm:pb-14 sm:pt-5 lg:pb-16 lg:pt-6">
     <div class="w-full border-0 bg-transparent px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10">
       <div class="mx-auto max-w-[58rem] text-center">
         <h2 class="text-[2rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#111827] sm:text-[2.7rem] lg:text-[3.2rem]">

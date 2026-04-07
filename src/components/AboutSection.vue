@@ -1,5 +1,5 @@
 ﻿<template>
-  <section class="w-full bg-transparent text-[#181a21]">
+  <section id="about" class="w-full scroll-mt-28 bg-transparent text-[#181a21]">
     <div class="w-full px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
       <div class="flex min-h-[620px] flex-col p-6 sm:p-8 lg:p-10">
         <div>
