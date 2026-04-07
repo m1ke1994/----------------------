@@ -103,18 +103,19 @@ import { heroContent } from '../data'
           </div>
 
           <div
-            class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-[#e1e4ea] pt-8 sm:grid-cols-4"
+            class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-[#e1e4ea] pt-8 sm:grid-cols-2 xl:grid-cols-4"
           >
             <article
               v-for="item in heroContent.stats"
               :key="item.value + item.label"
+              class="text-center"
             >
               <p
                 class="text-[2.6rem] font-semibold leading-none tracking-[-0.04em] text-[#191c24] sm:text-[3.15rem] lg:text-[3.45rem]"
               >
                 {{ item.value }}
               </p>
-              <p class="mt-2 max-w-[8.75rem] text-[0.875rem] leading-[1.48] text-[#6b7078]">
+              <p class="mx-auto mt-2 max-w-[8.75rem] text-[0.875rem] leading-[1.48] text-[#6b7078]">
                 {{ item.label }}
               </p>
             </article>

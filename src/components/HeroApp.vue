@@ -38,11 +38,11 @@ import { heroContent } from '../data'
       </div>
 
       <div class="relative w-full bg-[#edf0f3]">
-        <div class="h-[12.5rem] w-full sm:h-[15.5rem] md:h-[18.5rem] lg:h-[20.5rem] xl:h-[22.5rem]">
+        <div class="h-[13.5rem] w-full sm:h-[16.5rem] md:h-[19.5rem] lg:h-[21.5rem] xl:h-[33rem]">
           <img
             :src="heroContent.heroImage"
             alt="Modern glass house"
-            class="h-full w-full object-cover object-[64%_44%] sm:object-[67%_42%] lg:object-[72%_44%]"
+            class="h-full w-full object-cover object-[64%_36%] sm:object-[67%_34%] lg:object-[72%_36%]"
           />
         </div>
 
