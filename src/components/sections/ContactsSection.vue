@@ -1,7 +1,47 @@
 <script setup>
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRequestModal } from '../../composables/useRequestModal'
 
 const { openRequestModal } = useRequestModal()
+
+const mapHolderRef = ref(null)
+const mapShouldLoad = ref(false)
+const mapLoaded = ref(false)
+const mapSrc =
+  'https://www.google.com/maps?q=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0,%20%D1%83%D0%BB.%20%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BD%D0%B0%D1%8F,%2012&output=embed'
+
+let mapObserver = null
+
+onMounted(() => {
+  if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+    mapShouldLoad.value = true
+    return
+  }
+
+  mapObserver = new IntersectionObserver(
+    (entries) => {
+      const hasVisibleEntry = entries.some((entry) => entry.isIntersecting)
+      if (!hasVisibleEntry) return
+
+      mapShouldLoad.value = true
+      mapObserver?.disconnect()
+      mapObserver = null
+    },
+    {
+      rootMargin: '220px 0px',
+      threshold: 0.01,
+    },
+  )
+
+  if (mapHolderRef.value) {
+    mapObserver.observe(mapHolderRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  mapObserver?.disconnect()
+  mapObserver = null
+})
 </script>
 
 <template>
@@ -140,18 +180,33 @@ const { openRequestModal } = useRequestModal()
         </article>
 
         <article
+          ref="mapHolderRef"
           class="relative overflow-hidden rounded-[1.25rem] border border-[#5b6169]/25 bg-white/50 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-[6px] sm:p-5 lg:p-6"
         >
           <div
-            class="h-full min-h-[22rem] w-full overflow-hidden rounded-[1rem] border border-[#5b6169]/20 bg-[#f8fafc] lg:min-h-[26rem]"
+            class="relative h-full min-h-[22rem] w-full overflow-hidden rounded-[1rem] border border-[#5b6169]/20 bg-[#f8fafc] lg:min-h-[26rem]"
           >
+            <div
+              class="absolute inset-0 z-[1] bg-[linear-gradient(120deg,#e7ebf0_20%,#f5f7fa_50%,#e7ebf0_80%)] bg-[length:180%_100%] animate-[mapShimmer_1.9s_ease-in-out_infinite] transition-opacity duration-300"
+              :class="mapLoaded ? 'opacity-0' : 'opacity-100'"
+            />
+            <div
+              class="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center transition-opacity duration-300"
+              :class="mapLoaded ? 'opacity-0' : 'opacity-100'"
+            >
+              <span class="h-8 w-8 animate-spin rounded-full border-2 border-[#c7ced8] border-t-[#7b8798]" />
+            </div>
+
             <iframe
+              v-if="mapShouldLoad"
               title="Карта: Москва, ул. Примерная, 12"
-              src="https://www.google.com/maps?q=Москва,+ул.+Примерная,+12&output=embed"
-              class="h-full min-h-[22rem] w-full border-0 lg:min-h-[26rem]"
+              :src="mapSrc"
+              class="h-full min-h-[22rem] w-full border-0 transition-opacity duration-500 lg:min-h-[26rem]"
+              :class="mapLoaded ? 'opacity-100' : 'opacity-0'"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               allowfullscreen
+              @load="mapLoaded = true"
             />
           </div>
         </article>
@@ -163,5 +218,14 @@ const { openRequestModal } = useRequestModal()
 <style scoped>
 .contacts-root {
   font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+@keyframes mapShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 </style>

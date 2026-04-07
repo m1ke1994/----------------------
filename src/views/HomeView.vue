@@ -18,7 +18,9 @@ import AppFooter from '../components/layout/AppFooter.vue'
         muted
         loop
         playsinline
-        preload="auto"
+        preload="none"
+        poster="/images/bg.jpg"
+        aria-hidden="true"
       >
         <source src="/videos/video-bg.MP4" type="video/mp4" />
       </video>

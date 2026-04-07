@@ -14,6 +14,7 @@ const heroPhrases = [
 const activePhraseIndex = ref(0)
 const phraseStepMs = 1800
 let phraseTimer = null
+const isVideoReady = ref(false)
 
 const { openRequestModal } = useRequestModal()
 
@@ -82,13 +83,28 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="relative min-w-0 w-full overflow-hidden bg-[#edf0f3]">
-        <div class="h-[13.5rem] w-full overflow-hidden sm:h-[16.5rem] md:h-[33.5rem] lg:h-[33.5rem] xl:h-[43rem]">
+        <div class="relative h-[13.5rem] w-full overflow-hidden sm:h-[16.5rem] md:h-[33.5rem] lg:h-[33.5rem] xl:h-[43rem]">
+          <div
+            class="absolute inset-0 bg-[linear-gradient(135deg,#edf0f3_0%,#dfe4ea_45%,#eef2f6_100%)] transition-opacity duration-500"
+            :class="isVideoReady ? 'opacity-0' : 'opacity-100'"
+          />
+
+          <div
+            class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-500"
+            :class="isVideoReady ? 'opacity-0' : 'opacity-100'"
+          >
+            <span class="h-8 w-8 animate-spin rounded-full border-2 border-[#c7ced8] border-t-[#7b8798]" />
+          </div>
+
           <video
-            class="block h-full w-full object-cover object-[30%_70%] sm:object-[30%_70%] lg:object-[30%_70%]"
+            class="block h-full w-full object-cover object-[30%_70%] transition-opacity duration-500 sm:object-[30%_70%] lg:object-[30%_70%]"
+            :class="isVideoReady ? 'opacity-100' : 'opacity-0'"
             autoplay
             muted
             playsinline
-            preload="auto"
+            preload="metadata"
+            poster="/images/hero.jpg"
+            @loadeddata="isVideoReady = true"
           >
             <source src="/videos/12345.MP4" type="video/mp4" />
           </video>
@@ -114,8 +130,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
-
 .hero-root {
   font-family: "Manrope", "Segoe UI", sans-serif;
 }

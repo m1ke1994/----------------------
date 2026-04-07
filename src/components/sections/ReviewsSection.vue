@@ -191,6 +191,11 @@ onBeforeUnmount(() => {
                 :src="review.avatar"
                 :alt="review.name"
                 class="h-12 w-12 shrink-0 rounded-full border border-[#5b6169]/35 bg-white/75 object-cover"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="48"
+                height="48"
               />
 
               <div class="min-w-0">

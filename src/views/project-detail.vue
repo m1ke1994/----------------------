@@ -8,7 +8,18 @@ import ProjectsSection from '../components/sections/ProjectsSection.vue'
     <HeroApp />
 
     <section class="section_all">
-    
+      <video
+        class="section_all__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="/images/bg.jpg"
+        aria-hidden="true"
+      >
+        <source src="/videos/video-bg.MP4" type="video/mp4" />
+      </video>
 
       <div class="section_all__overlay"></div>
 

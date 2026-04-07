@@ -10,6 +10,7 @@ const props = defineProps({
 })
 
 const activeFilter = ref('all')
+const loadedImages = ref({})
 
 const filteredProjects = computed(() => {
   if (activeFilter.value === 'all') {
@@ -23,6 +24,12 @@ const getFilterLabel = (categoryId) => {
   const filter = projectFilters.find((item) => item.id === categoryId)
   return filter ? filter.label : 'Проект'
 }
+
+const markImageLoaded = (id) => {
+  loadedImages.value[id] = true
+}
+
+const isImageLoaded = (id) => Boolean(loadedImages.value[id])
 </script>
 
 <template>
@@ -68,11 +75,25 @@ const getFilterLabel = (categoryId) => {
           class="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-[#5b6169]/28 bg-white/55 shadow-[0_12px_30px_rgba(15,23,42,0.1)] backdrop-blur-[6px] transition duration-300 hover:-translate-y-[2px] hover:border-[#5b6169]/45 hover:shadow-[0_16px_38px_rgba(15,23,42,0.14)]"
         >
           <div class="relative aspect-[5/3] overflow-hidden">
+            <div
+              class="absolute inset-0 z-[1] bg-[linear-gradient(120deg,#e7ebf0_20%,#f5f7fa_50%,#e7ebf0_80%)] bg-[length:180%_100%] animate-[projectShimmer_1.8s_ease-in-out_infinite] transition-opacity duration-300"
+              :class="isImageLoaded(project.id) ? 'opacity-0' : 'opacity-100'"
+            />
+
             <img
               :src="project.image"
               :alt="project.title"
               class="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.04]"
+              :class="isImageLoaded(project.id) ? 'opacity-100' : 'opacity-0'"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="960"
+              height="576"
+              @load="markImageLoaded(project.id)"
+              @error="markImageLoaded(project.id)"
             />
+
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent" />
             <span class="absolute left-3 top-3 inline-flex rounded-full border border-white/65 bg-white/80 px-3 py-1 text-[0.72rem] font-medium text-[#374151] backdrop-blur-[3px]">
               {{ getFilterLabel(project.category) }}
@@ -123,5 +144,14 @@ const getFilterLabel = (categoryId) => {
 
 .project-card-move {
   transition: transform 0.3s ease;
+}
+
+@keyframes projectShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 </style>
