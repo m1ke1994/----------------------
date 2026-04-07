@@ -1,6 +1,7 @@
 ﻿<script setup>
 import HeroApp from '../components/HeroApp.vue'
 import AboutSection from '../components/AboutSection.vue'
+import ProjectsSection from '../components/sections/ProjectsSection.vue'
 </script>
 
 <template>
@@ -23,6 +24,7 @@ import AboutSection from '../components/AboutSection.vue'
 
       <div class="section_all__content">
         <AboutSection />
+        <ProjectsSection />
       </div>
     </section>
   </main>
@@ -37,7 +39,6 @@ import AboutSection from '../components/AboutSection.vue'
   position: relative;
   overflow: hidden;
   width: 100%;
-  
 }
 
 .section_all__video {
