@@ -1,4 +1,111 @@
-﻿<template>
+<script setup>
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
+const statsGridRef = ref(null)
+const animatedValues = ref([0, 0, 0, 0])
+const counterTargets = [10, 250, 98, 50]
+
+let countersStarted = false
+let countersObserver = null
+const rafIds = []
+
+const isReducedMotion = () => {
+  if (typeof window === 'undefined' || !window.matchMedia) return false
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+const easeOutCubic = (progress) => 1 - (1 - progress) ** 3
+
+const clearCounterRafs = () => {
+  rafIds.forEach((id) => {
+    if (id) {
+      window.cancelAnimationFrame(id)
+    }
+  })
+  rafIds.length = 0
+}
+
+const animateCounter = (index, target, durationMs, delayMs) => {
+  let rafId = 0
+  let startTime = 0
+
+  const tick = (time) => {
+    if (!startTime) startTime = time
+
+    const elapsed = time - startTime - delayMs
+    if (elapsed < 0) {
+      rafId = window.requestAnimationFrame(tick)
+      rafIds[index] = rafId
+      return
+    }
+
+    const progress = Math.min(elapsed / durationMs, 1)
+    const value = Math.round(target * easeOutCubic(progress))
+    animatedValues.value[index] = value
+
+    if (progress < 1) {
+      rafId = window.requestAnimationFrame(tick)
+      rafIds[index] = rafId
+      return
+    }
+
+    animatedValues.value[index] = target
+  }
+
+  rafId = window.requestAnimationFrame(tick)
+  rafIds[index] = rafId
+}
+
+const startCounters = () => {
+  if (countersStarted) return
+  countersStarted = true
+
+  if (isReducedMotion()) {
+    animatedValues.value = [...counterTargets]
+    return
+  }
+
+  counterTargets.forEach((target, index) => {
+    const durationMs = 1200 + Math.min(target / 250, 1) * 450
+    const delayMs = index * 110
+    animateCounter(index, target, durationMs, delayMs)
+  })
+}
+
+onMounted(() => {
+  if (typeof window === 'undefined') return
+
+  if (!('IntersectionObserver' in window) || !statsGridRef.value) {
+    startCounters()
+    return
+  }
+
+  countersObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.some((entry) => entry.isIntersecting)
+      if (!visible) return
+
+      startCounters()
+      countersObserver?.disconnect()
+      countersObserver = null
+    },
+    {
+      threshold: 0.24,
+      rootMargin: '0px 0px -10% 0px',
+    },
+  )
+
+  countersObserver.observe(statsGridRef.value)
+})
+
+onBeforeUnmount(() => {
+  clearCounterRafs()
+  countersObserver?.disconnect()
+  countersObserver = null
+})
+</script>
+
+<template>
   <section id="about" class="w-full scroll-mt-28 bg-transparent text-[#181a21]">
     <div class="w-full px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
       <div class="flex min-h-[620px] flex-col p-6 sm:p-8 lg:p-10">
@@ -106,13 +213,13 @@
         <hr class="my-8 border-0 border-t border-[#5b6169]/45" />
 
         <div class="mt-auto">
-          <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div ref="statsGridRef" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <article
               v-reveal="{ type: 'card-left', delay: 0.05, mobileAlternate: true, mobileIndex: 4 }"
               class="rounded-[1rem] border border-[#5b6169]/40 bg-white/22 px-4 py-5 text-center shadow-[0_10px_24px_rgba(16,24,40,0.1)] backdrop-blur-[8px]"
             >
               <p class="text-[2.4rem] font-semibold leading-none tracking-[-0.03em] text-[#111827] sm:text-[2.9rem] lg:text-[3.2rem]">
-                10+
+                {{ animatedValues[0] }}+
               </p>
               <p class="mx-auto mt-2 max-w-[9rem] text-[0.9rem] leading-[1.45] text-[#4b5563]">
                 лет на рынке
@@ -124,7 +231,7 @@
               class="rounded-[1rem] border border-[#5b6169]/40 bg-white/22 px-4 py-5 text-center shadow-[0_10px_24px_rgba(16,24,40,0.1)] backdrop-blur-[8px]"
             >
               <p class="text-[2.4rem] font-semibold leading-none tracking-[-0.03em] text-[#111827] sm:text-[2.9rem] lg:text-[3.2rem]">
-                250+
+                {{ animatedValues[1] }}+
               </p>
               <p class="mx-auto mt-2 max-w-[9rem] text-[0.9rem] leading-[1.45] text-[#4b5563]">
                 реализованных проектов
@@ -136,7 +243,7 @@
               class="rounded-[1rem] border border-[#5b6169]/40 bg-white/22 px-4 py-5 text-center shadow-[0_10px_24px_rgba(16,24,40,0.1)] backdrop-blur-[8px]"
             >
               <p class="text-[2.4rem] font-semibold leading-none tracking-[-0.03em] text-[#111827] sm:text-[2.9rem] lg:text-[3.2rem]">
-                98%
+                {{ animatedValues[2] }}%
               </p>
               <p class="mx-auto mt-2 max-w-[9rem] text-[0.9rem] leading-[1.45] text-[#4b5563]">
                 довольных клиентов
@@ -148,7 +255,7 @@
               class="rounded-[1rem] border border-[#5b6169]/40 bg-white/22 px-4 py-5 text-center shadow-[0_10px_24px_rgba(16,24,40,0.1)] backdrop-blur-[8px]"
             >
               <p class="text-[2.4rem] font-semibold leading-none tracking-[-0.03em] text-[#111827] sm:text-[2.9rem] lg:text-[3.2rem]">
-                50+
+                {{ animatedValues[3] }}+
               </p>
               <p class="mx-auto mt-2 max-w-[9rem] text-[0.9rem] leading-[1.45] text-[#4b5563]">
                 партнеров и поставщиков

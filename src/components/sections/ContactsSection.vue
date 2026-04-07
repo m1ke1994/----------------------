@@ -58,7 +58,7 @@ onBeforeUnmount(() => {
           v-reveal="{ type: 'title', delay: 0.08 }"
           class="mt-3 text-[2.2rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#111827] sm:text-[2.8rem] lg:text-[3.2rem]"
         >
-          Контакты
+          Напишите нам
         </h2>
       </div>
 
